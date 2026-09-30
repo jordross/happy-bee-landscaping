@@ -11,7 +11,7 @@ Vercel provides the best experience with preview URLs, edge functions, and autom
 #### A. Deploy via Git Integration (Easiest)
 
 1. Go to [vercel.com/new](https://vercel.com/new)
-2. Import `jordross/my-first-vercel-app` from GitHub
+2. Import `jordross/happy-bee-landscaping` from GitHub
 3. Configure environment variables:
    - `NEXT_PUBLIC_CONTACT_EMAIL` = your email
    - `NEXT_PUBLIC_CONTACT_PHONE` = your phone number
@@ -40,7 +40,7 @@ vercel --prod
 
 ```bash
 # Check if repo already has Vercel integration
-gh api repos/jordross/my-first-vercel-app/deployments
+gh api repos/jordross/happy-bee-landscaping/deployments
 
 # Or check PR for preview URL
 gh pr view 1 --json deployments
@@ -59,8 +59,8 @@ If Vercel integration is unavailable, deploy to GitHub Pages automatically via G
 
 2. **Add Secrets** (optional - will use placeholders if not set):
    - Go to: Settings → Secrets → Actions
-   - Add `CONTACT_EMAIL` (e.g., info@happybeelandscaping.ca)
-   - Add `CONTACT_PHONE` (e.g., (604) 123-4567)
+   - Add `CONTACT_EMAIL` (e.g., info@happybeelandscapes.ca)
+   - Add `CONTACT_PHONE` (e.g., (604) 674-6785)
 
 3. **Trigger Deployment**:
    - Merge PR to `main` (auto-deploys)
@@ -68,7 +68,7 @@ If Vercel integration is unavailable, deploy to GitHub Pages automatically via G
 
 4. **Site will be live at**:
    ```
-   https://jordross.github.io/my-first-vercel-app/
+   https://jordross.github.io/happy-bee-landscaping/
    ```
 
 #### Manual GitHub Pages Build

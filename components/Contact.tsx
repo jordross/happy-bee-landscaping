@@ -30,7 +30,7 @@ export default function Contact() {
 
     if (!formEndpoint || formEndpoint.includes("your-form-endpoint")) {
       const mailtoBody = `Name: ${formData.name}\nCompany: ${formData.company}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nSite Address: ${formData.siteAddress}\nCity: ${formData.city}\n\nMessage:\n${formData.message}`;
-      window.location.href = `mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL || "info@happybeelandscaping.ca"}?subject=Website Contact: ${formData.company || formData.name}&body=${encodeURIComponent(mailtoBody)}`;
+      window.location.href = `mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL || "info@happybeelandscapes.ca"}?subject=Website Contact: ${formData.company || formData.name}&body=${encodeURIComponent(mailtoBody)}`;
       setStatus("idle");
       return;
     }
@@ -224,10 +224,10 @@ export default function Contact() {
                 <div>
                   <h3 className="font-bold text-happy-green-700 mb-1">Email</h3>
                   <a 
-                    href={`mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL || "info@happybeelandscaping.ca"}`}
+                    href={`mailto:${process.env.NEXT_PUBLIC_CONTACT_EMAIL || "info@happybeelandscapes.ca"}`}
                     className="text-earth-600 hover:text-happy-green-600 transition-colors break-all"
                   >
-                    {process.env.NEXT_PUBLIC_CONTACT_EMAIL || "info@happybeelandscaping.ca"}
+                    {process.env.NEXT_PUBLIC_CONTACT_EMAIL || "info@happybeelandscapes.ca"}
                   </a>
                 </div>
               </div>
@@ -241,10 +241,10 @@ export default function Contact() {
                 <div>
                   <h3 className="font-bold text-happy-green-700 mb-1">Phone</h3>
                   <a 
-                    href={`tel:${process.env.NEXT_PUBLIC_CONTACT_PHONE || "+16041234567"}`}
+                    href={`tel:+1${process.env.NEXT_PUBLIC_CONTACT_PHONE?.replace(/\D/g, '') || "6046746785"}`}
                     className="text-earth-600 hover:text-happy-green-600 transition-colors"
                   >
-                    {process.env.NEXT_PUBLIC_CONTACT_PHONE || "(604) 123-4567"}
+                    {process.env.NEXT_PUBLIC_CONTACT_PHONE || "(604) 674-6785"}
                   </a>
                 </div>
               </div>
