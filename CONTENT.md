@@ -27,8 +27,8 @@ Contact information is stored as environment variables to make updates easy with
 The site currently uses these placeholder values in `.env.example`:
 
 ```
-NEXT_PUBLIC_CONTACT_EMAIL=info@happybeelandscaping.ca
-NEXT_PUBLIC_CONTACT_PHONE=(604) 123-4567
+NEXT_PUBLIC_CONTACT_EMAIL=info@happybeelandscapes.ca
+NEXT_PUBLIC_CONTACT_PHONE=(604) 674-6785
 ```
 
 ### How to Update
@@ -37,7 +37,7 @@ NEXT_PUBLIC_CONTACT_PHONE=(604) 123-4567
 2. Set your actual values:
    ```
    NEXT_PUBLIC_CONTACT_EMAIL=your-actual-email@yourdomain.com
-   NEXT_PUBLIC_CONTACT_PHONE=(123) 456-7890
+   NEXT_PUBLIC_CONTACT_PHONE=(###) ###-####
    ```
 3. Restart the development server or redeploy to production
 4. **Important**: Phone numbers should use the format `(###) ###-####` for consistency
@@ -65,7 +65,7 @@ When deploying to Vercel (or another platform):
 
 **Current Content:**
 - Headline: "Happy Bee Landscaping"
-- Subheadline: "Professional commercial landscaping services for property managers in the Greater Kansas City area."
+- Subheadline: "Professional commercial landscaping services for property managers in Metro Vancouver, BC."
 - Primary CTA: "Get a Free Quote"
 
 **What You Can Edit:**
@@ -165,7 +165,7 @@ Highlights four key differentiators:
 ### 5. Service Area Section (`/components/ServiceArea.tsx`)
 
 **Current Content:**
-- Lists Greater Kansas City area with placeholder neighborhoods
+- Lists Metro Vancouver, BC area with specific cities and neighbourhoods
 
 **CRITICAL - Update This Immediately:**
 This is placeholder content and must be updated to reflect your actual service area.
@@ -300,7 +300,7 @@ description: "Professional commercial landscaping services for property managers
    - Include primary keyword
    - Include location
    - Include business name
-   - Example: "Commercial Landscaping Kansas City | Happy Bee Landscaping"
+   - Example: "Commercial Landscaping Metro Vancouver | Happy Bee Landscaping"
 
 2. **Meta Description** (150-160 characters):
    - Compelling summary of services
@@ -331,12 +331,14 @@ Consider adding LocalBusiness schema to improve search appearance:
   "@type": "LocalBusiness",
   "name": "Happy Bee Landscaping",
   "description": "Commercial landscaping services",
-  "telephone": "(604) 123-4567",
-  "email": "info@happybeelandscaping.ca",
+  "telephone": "(604) 674-6785",
+  "email": "info@happybeelandscapes.ca",
+  "url": "https://happybeelandscapes.ca",
   "address": {
     "@type": "PostalAddress",
-    "addressLocality": "Kansas City",
-    "addressRegion": "MO"
+    "addressLocality": "Vancouver",
+    "addressRegion": "BC",
+    "addressCountry": "CA"
   }
 }
 ```
@@ -393,7 +395,7 @@ This can be added to `/app/layout.tsx` in a `<script type="application/ld+json">
 ### Fake Credentials
 ❌ "20+ years of experience" (if you're new)
 ❌ "Award-winning service" (if you haven't won awards)
-❌ "Serving Kansas City since 1998" (if you started in 2025)
+❌ "Serving Metro Vancouver since 1998" (if you started in 2025)
 
 **Why:** Property managers verify claims. False statements destroy trust and can be fraud.
 
@@ -409,7 +411,7 @@ This can be added to `/app/layout.tsx` in a `<script type="application/ld+json">
 4. Permanent reputation damage
 
 ### Unverifiable Superlatives
-❌ "The best landscaping company in Kansas City"
+❌ "The best landscaping company in Metro Vancouver"
 ❌ "Fastest response times in the industry"
 ❌ "Highest quality guaranteed"
 
@@ -442,7 +444,7 @@ This can be added to `/app/layout.tsx` in a `<script type="application/ld+json">
 ### Honesty About Experience
 
 ✅ "Our crew has 15+ years of combined experience in commercial landscaping"
-✅ "Licensed and insured to serve commercial properties in Kansas City"
+✅ "Licensed and insured to serve commercial properties in Metro Vancouver"
 ✅ "We're new to the market, which means we're highly motivated to earn your business"
 
 ### Verifiable Claims
@@ -821,7 +823,7 @@ When you need to make content changes:
 ### Common Questions
 
 **Q: How do I update the phone number?**
-A: Change `NEXT_PUBLIC_CONTACT_PHONE` in `.env.local` (local) or Vercel dashboard (production).
+A: Change `NEXT_PUBLIC_CONTACT_PHONE` in `.env.local` (local) or Vercel dashboard (production). Remember to format as (###) ###-#### and use tel:+1##########.
 
 **Q: Where do I change the services offered?**
 A: Edit `/components/Services.tsx`, modify the services array.

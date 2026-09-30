@@ -1,6 +1,6 @@
 # Happy Bee Landscaping Website
 
-A modern, professional website for Happy Bee Landscaping - a commercial landscaping service specializing in property management partnerships in the Greater Kansas City area. Built with Next.js 15, TypeScript, and Tailwind CSS to deliver a fast, accessible, and SEO-optimized user experience.
+A modern, professional website for Happy Bee Landscaping - a commercial landscaping service specializing in property management partnerships in Metro Vancouver, BC. Built with Next.js 15, TypeScript, and Tailwind CSS to deliver a fast, accessible, and SEO-optimized user experience.
 
 ## Overview
 
@@ -99,8 +99,8 @@ These variables must be set for the website to display correct contact informati
 
 ```bash
 # Contact Information (displayed throughout the site)
-NEXT_PUBLIC_CONTACT_EMAIL=info@happybeelandscaping.ca
-NEXT_PUBLIC_CONTACT_PHONE=(604) 123-4567
+NEXT_PUBLIC_CONTACT_EMAIL=info@happybeelandscapes.ca
+NEXT_PUBLIC_CONTACT_PHONE=(604) 674-6785
 ```
 
 **Important**: These variables are prefixed with `NEXT_PUBLIC_` because they are used in client-side components. They will be embedded in the JavaScript bundle.
@@ -196,7 +196,7 @@ Vercel is the recommended deployment platform for Next.js applications.
 
 5. **Set Up Custom Domain** (Optional):
    - Go to Project Settings → Domains
-   - Add your custom domain (e.g., `happybeelandscaping.ca`)
+   - Add your custom domain (e.g., `happybeelandscapes.ca`)
    - Follow DNS configuration instructions
 
 ### Method 2: Deploy via Vercel CLI
@@ -248,7 +248,7 @@ The website consists of eight distinct sections, each serving a specific purpose
 
 ### 5. Service Area
 - **Purpose**: Geographic coverage transparency
-- **Content**: Greater Kansas City area with specific neighborhoods
+- **Content**: Metro Vancouver, BC with specific cities and neighbourhoods
 - **Format**: Clear list with contextual information
 - **Note**: Customizable for actual service coverage
 
@@ -455,8 +455,8 @@ This is a custom website built for Happy Bee Landscaping. All rights reserved.
 ## Contact
 
 For technical support or questions about this website:
-- Email: info@happybeelandscaping.ca
-- Phone: (604) 123-4567
+- Email: info@happybeelandscapes.ca
+- Phone: (604) 674-6785
 
 ---
 
