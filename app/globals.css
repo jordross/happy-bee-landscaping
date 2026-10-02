@@ -16,3 +16,10 @@ body {
 html {
   scroll-behavior: smooth;
 }
+
+/* Add padding to bottom of body for mobile bottom bar */
+@media (max-width: 1023px) {
+  body {
+    padding-bottom: 72px;
+  }
+}

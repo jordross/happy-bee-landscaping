@@ -71,6 +71,16 @@ export default function WhyUs() {
             or awards we haven&apos;t won. We&apos;re building our reputation through reliable service and professional execution.
           </p>
         </div>
+
+        {/* CTA */}
+        <div className="mt-12 text-center">
+          <a
+            href="#contact"
+            className="inline-block bg-happy-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-happy-green-700 transition-colors shadow-lg hover:shadow-xl"
+          >
+            Request a Quote
+          </a>
+        </div>
       </div>
     </section>
   );
