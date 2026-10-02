@@ -78,6 +78,16 @@ export default function Services() {
             Heavy design-build and hardscape capital projects are deferred while we establish reliable service and cash flow.
           </p>
         </div>
+
+        {/* CTA */}
+        <div className="mt-12 text-center">
+          <a
+            href="#how-it-works"
+            className="inline-block bg-happy-green-600 text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-happy-green-700 transition-colors shadow-lg hover:shadow-xl"
+          >
+            See How It Works
+          </a>
+        </div>
       </div>
     </section>
   );
