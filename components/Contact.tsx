@@ -13,6 +13,7 @@ export default function Contact() {
     propertyAddress: "",
     propertyType: "",
     serviceNeeded: "",
+    botcheck: "",
   });
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -69,32 +70,22 @@ export default function Contact() {
 
     setStatus("submitting");
 
-    const formEndpoint = process.env.NEXT_PUBLIC_FORM_ENDPOINT;
-
-    if (!formEndpoint || formEndpoint.includes("your-form-endpoint")) {
-      const mailtoBody = `Name: ${formData.name}\nCompany: ${formData.company}\nEmail: ${formData.email}\nPhone: ${formData.phone}\nProperty Address: ${formData.propertyAddress}\nProperty Type: ${formData.propertyType}\n\nService Needed:\n${formData.serviceNeeded}`;
-      window.location.href = `mailto:${siteConfig.contact.email}?subject=Quote Request: ${formData.company || formData.name}&body=${encodeURIComponent(mailtoBody)}`;
-      setStatus("success");
-      setFormData({
-        name: "",
-        company: "",
-        email: "",
-        phone: "",
-        propertyAddress: "",
-        propertyType: "",
-        serviceNeeded: "",
-      });
-      setTimeout(() => setStatus("idle"), 5000);
-      return;
-    }
-
     try {
-      const response = await fetch(formEndpoint, {
+      const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          access_key: siteConfig.web3forms.accessKey,
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          message: `Company/Strata: ${formData.company || "N/A"}\nProperty Address: ${formData.propertyAddress || "N/A"}\nProperty Type: ${formData.propertyType}\n\nService Needed:\n${formData.serviceNeeded}`,
+          subject: "New quote request - Happy Bee Landscaping",
+          from_name: "Happy Bee Website",
+          botcheck: formData.botcheck,
+        }),
       });
 
       if (response.ok) {
@@ -107,6 +98,7 @@ export default function Contact() {
           propertyAddress: "",
           propertyType: "",
           serviceNeeded: "",
+          botcheck: "",
         });
         setTimeout(() => setStatus("idle"), 5000);
       } else {
@@ -143,7 +135,7 @@ export default function Contact() {
                   Thank You!
                 </h3>
                 <p className="text-earth-700 mb-6">
-                  We&apos;ve received your request and will get back to you within one business day to schedule a site walk.
+                  Thanks, we&apos;ll reply within one business day to schedule a site walk.
                 </p>
                 <button
                   onClick={() => setStatus("idle")}
@@ -289,6 +281,17 @@ export default function Contact() {
                   )}
                 </div>
 
+                {/* Honeypot field for spam prevention */}
+                <input
+                  type="checkbox"
+                  name="botcheck"
+                  id="botcheck"
+                  className="hidden"
+                  style={{ display: "none" }}
+                  value={formData.botcheck}
+                  onChange={handleChange}
+                />
+
                 <button
                   type="submit"
                   disabled={status === "submitting"}
@@ -306,7 +309,14 @@ export default function Contact() {
 
                 {status === "error" && (
                   <div className="mt-4 p-4 bg-red-50 border border-red-200 text-red-700 rounded-lg">
-                    Something went wrong. Please try again or call us directly at {siteConfig.contact.phone}.
+                    <p className="font-semibold mb-2">Something went wrong with the form submission.</p>
+                    <p className="text-sm">
+                      Please try again or contact us directly:
+                      <br />
+                      Phone: <a href={`tel:${siteConfig.contact.phoneRaw}`} className="underline hover:text-red-800">{siteConfig.contact.phone}</a>
+                      <br />
+                      Email: <a href={`mailto:${siteConfig.contact.email}`} className="underline hover:text-red-800">{siteConfig.contact.email}</a>
+                    </p>
                   </div>
                 )}
               </form>

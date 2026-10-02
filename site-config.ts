@@ -31,6 +31,16 @@ export const siteConfig = {
   },
 
   /**
+   * Web3Forms Configuration
+   * 
+   * Access key for the quote form submission service.
+   * This key is public by design and safe to commit.
+   */
+  web3forms: {
+    accessKey: process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "e3eb3787-266b-4709-8a0e-99f7027be0f2",
+  },
+
+  /**
    * Trust & Credentials
    * 
    * Fill in these values when available. Empty strings will hide the credential from the site.
