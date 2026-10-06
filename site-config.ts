@@ -77,8 +77,14 @@ export const siteConfig = {
   images: {
     hero: {
       // Example: "/images/hero.jpg"
-      src: "",
+      src: "/images/hero.jpg",
       alt: "Professional commercial landscape maintenance in Metro Vancouver",
+      credit: "Photo by Unsplash",
+    },
+    team: {
+      // Example: "/images/team.jpg"
+      src: "",
+      alt: "Happy Bee Landscaping team",
     },
     beforeAfter: [] as BeforeAfterImage[],
   },

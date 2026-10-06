@@ -1,77 +1,37 @@
+import { siteConfig } from "@/site-config";
+
 export default function Footer() {
-  const currentYear = new Date().getFullYear();
-
   return (
-    <footer className="bg-happy-green-800 text-white py-12">
+    <footer className="bg-happy-green-800 text-white py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-3 gap-8 mb-8">
-          <div>
-            <div className="flex items-center gap-2 mb-4">
-              <span className="text-3xl" role="img" aria-label="bee">🐝</span>
-              <h3 className="text-xl font-bold">Happy Bee Landscaping</h3>
-            </div>
-            <p className="text-happy-green-100 leading-relaxed">
-              Commercial grounds & property maintenance for stratas and property managers across Metro Vancouver.
+        <div className="flex flex-col items-center text-center space-y-4">
+          <div className="text-2xl" role="img" aria-label="bee">🐝</div>
+          <h3 className="text-xl font-bold">Happy Bee Landscaping</h3>
+          <p className="text-earth-100 text-sm max-w-2xl">
+            Commercial grounds &amp; property maintenance for stratas and property managers
+          </p>
+          <p className="text-earth-200 text-sm">
+            Serving Vancouver, expanding to Burnaby and New Westminster
+          </p>
+          <div className="flex flex-wrap justify-center gap-4 text-sm">
+            <a href={`tel:${siteConfig.contact.phoneRaw}`} className="hover:text-earth-200 transition-colors">
+              {siteConfig.contact.phone}
+            </a>
+            <span className="text-earth-400">•</span>
+            <a href={`mailto:${siteConfig.contact.email}`} className="hover:text-earth-200 transition-colors">
+              {siteConfig.contact.email}
+            </a>
+          </div>
+          <div className="pt-4 border-t border-happy-green-700 w-full text-center">
+            <p className="text-earth-200 text-xs">
+              © {new Date().getFullYear()} Happy Bee Landscaping. All rights reserved.
             </p>
+            {siteConfig.images.hero.credit && (
+              <p className="text-earth-300 text-xs mt-2">
+                Hero image: {siteConfig.images.hero.credit}
+              </p>
+            )}
           </div>
-
-          <div>
-            <h4 className="text-lg font-bold mb-4">Quick Links</h4>
-            <ul className="space-y-2">
-              <li>
-                <a href="#home" className="text-happy-green-100 hover:text-white transition-colors">
-                  Home
-                </a>
-              </li>
-              <li>
-                <a href="#who-we-serve" className="text-happy-green-100 hover:text-white transition-colors">
-                  Who We Serve
-                </a>
-              </li>
-              <li>
-                <a href="#services" className="text-happy-green-100 hover:text-white transition-colors">
-                  Services
-                </a>
-              </li>
-              <li>
-                <a href="#property-managers" className="text-happy-green-100 hover:text-white transition-colors">
-                  For Property Managers
-                </a>
-              </li>
-              <li>
-                <a href="#contact" className="text-happy-green-100 hover:text-white transition-colors">
-                  Contact
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="text-lg font-bold mb-4">Service Area</h4>
-            <ul className="space-y-2 text-happy-green-100">
-              <li>City of Vancouver (Primary)</li>
-              <li>Burnaby</li>
-              <li>New Westminster</li>
-              <li>Metro Vancouver Corridor</li>
-            </ul>
-            <div className="mt-6">
-              <a 
-                href="#contact" 
-                className="inline-block bg-white text-happy-green-700 px-6 py-2 rounded-lg font-semibold hover:bg-happy-green-50 transition-colors"
-              >
-                Get a Quote
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <div className="border-t border-happy-green-700 pt-8 text-center text-happy-green-100">
-          <p className="mb-2">
-            &copy; {currentYear} Happy Bee Landscaping. All rights reserved.
-          </p>
-          <p className="text-sm">
-            Commercial landscape maintenance · Stratas & property managers · Metro Vancouver, BC
-          </p>
         </div>
       </div>
     </footer>
