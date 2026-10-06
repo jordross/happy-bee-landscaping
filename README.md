@@ -51,8 +51,9 @@ This website serves as the primary digital presence for Happy Bee Landscaping, d
 - Client-side validation for immediate user feedback
 - Phone number formatting with US format support
 - Email validation with pattern matching
-- Flexible form submission options (Formspree, Resend API, or mailto fallback)
-- Error handling with user-friendly messages
+- Web3Forms integration for reliable form submissions
+- Honeypot spam protection built-in
+- Error handling with user-friendly messages and fallback contact info
 - Success confirmation with visual feedback
 
 ## Installation Instructions
@@ -107,38 +108,28 @@ NEXT_PUBLIC_CONTACT_PHONE=(604) 674-6785
 
 ### Optional Variables
 
-Choose one form submission method by setting the appropriate variable:
+### Web3Forms Configuration
 
-#### Option 1: Formspree (Recommended)
+The quote form uses Web3Forms for reliable, spam-protected submissions:
+
 ```bash
-NEXT_PUBLIC_FORM_ENDPOINT=https://formspree.io/f/your-form-id
+# Optional - override the default access key
+NEXT_PUBLIC_WEB3FORMS_KEY=e3eb3787-266b-4709-8a0e-99f7027be0f2
 ```
 
-**Setup**: 
-1. Create a free account at [formspree.io](https://formspree.io)
-2. Create a new form and copy the endpoint URL
-3. Configure email notifications in the Formspree dashboard
+**Setup:**
 
-**Pros**: Easy setup, spam protection, no backend required, submission tracking
+A default Web3Forms access key is already configured in `site-config.ts`. You can:
+1. Use the default key (no setup required)
+2. Get your own key from [web3forms.com](https://web3forms.com) for tracking submissions in your own dashboard
+3. Set `NEXT_PUBLIC_WEB3FORMS_KEY` to override the default
 
-#### Option 2: Resend API
-```bash
-RESEND_API_KEY=re_your_api_key_here
-```
-
-**Setup**:
-1. Create an account at [resend.com](https://resend.com)
-2. Generate an API key from the dashboard
-3. Verify your sending domain
-4. Requires backend API route (included in project)
-
-**Pros**: Full control, no third-party branding, programmable email handling
-
-#### Option 3: Mailto Fallback
-If no form endpoint is configured, the form will use the `mailto:` protocol, opening the user's default email client.
-
-**Pros**: Zero configuration, works everywhere
-**Cons**: Less user-friendly, no submission tracking, potential spam issues
+**Features:**
+- Built-in honeypot spam protection
+- No backend required
+- Reliable delivery to your email
+- Submission tracking (with your own key)
+- Access keys are public by design and safe to commit
 
 ## Development Commands
 
@@ -186,9 +177,9 @@ Vercel is the recommended deployment platform for Next.js applications.
 
 3. **Configure Environment Variables**:
    - In the project settings, add your environment variables:
-     - `NEXT_PUBLIC_CONTACT_EMAIL`
-     - `NEXT_PUBLIC_CONTACT_PHONE`
-     - `NEXT_PUBLIC_FORM_ENDPOINT` (or `RESEND_API_KEY`)
+    - `NEXT_PUBLIC_CONTACT_EMAIL`
+    - `NEXT_PUBLIC_CONTACT_PHONE`
+    - `NEXT_PUBLIC_WEB3FORMS_KEY` (optional)
 
 4. **Deploy**:
    - Vercel will automatically build and deploy
@@ -417,10 +408,10 @@ Tested and supported on:
 
 ### Form Submission Issues
 **Issue**: Form not submitting
-**Solution**: Check browser console for errors, verify `NEXT_PUBLIC_FORM_ENDPOINT` is set correctly
+**Solution**: Check browser console for errors. The form uses Web3Forms API - ensure you have an internet connection.
 
 **Issue**: Emails not being received
-**Solution**: Check spam folder, verify Formspree/Resend configuration, test email addresses
+**Solution**: Check spam folder. If using a custom access key, verify it's configured correctly in Web3Forms dashboard at web3forms.com. The default key sends to the email address configured in site-config.ts.
 
 ## Support and Maintenance
 

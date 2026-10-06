@@ -15,7 +15,7 @@ Vercel provides the best experience with preview URLs, edge functions, and autom
 3. Configure environment variables:
    - `NEXT_PUBLIC_CONTACT_EMAIL` = your email
    - `NEXT_PUBLIC_CONTACT_PHONE` = your phone number
-   - `NEXT_PUBLIC_FORM_ENDPOINT` = (optional) Formspree/Resend endpoint
+   - `NEXT_PUBLIC_WEB3FORMS_KEY` = (optional) your Web3Forms access key
 4. Click **Deploy**
 
 Vercel will automatically:
@@ -105,8 +105,9 @@ cd out && python3 -m http.server 8000
 - `NEXT_PUBLIC_CONTACT_PHONE` - Your phone number (formatted as displayed)
 
 ### Optional
-- `NEXT_PUBLIC_FORM_ENDPOINT` - Formspree or Resend endpoint URL
-  - If not set, form uses mailto fallback (opens email client)
+- `NEXT_PUBLIC_WEB3FORMS_KEY` - Your Web3Forms access key
+  - If not set, uses the default key configured in site-config.ts
+  - Get your own key from https://web3forms.com for submission tracking
 
 ### Setting Variables
 

@@ -562,106 +562,57 @@ Reference them in code with: `/images/filename.jpg`
 
 ## Form Endpoint Options
 
-The contact form can be configured to use three different submission methods:
+The contact form uses Web3Forms for reliable, spam-protected submissions:
 
-### Option 1: Formspree (Recommended for Most Users)
+### Web3Forms Integration (Configured)
 
-**Best For**: Non-technical users, quick setup, no backend needed
+**Best For**: All users - zero configuration required
 
 **Setup:**
-1. Create free account at [formspree.io](https://formspree.io)
-2. Create a new form in the dashboard
-3. Copy the form endpoint URL (looks like: `https://formspree.io/f/abc123xyz`)
-4. Add to `.env.local`:
-   ```
-   NEXT_PUBLIC_FORM_ENDPOINT=https://formspree.io/f/your-form-id
-   ```
+
+The form is already configured with a default Web3Forms access key. You can:
+
+1. **Use the default** (no setup required)
+   - Form submissions work immediately
+   - Emails are delivered to the address configured in `site-config.ts`
+
+2. **Get your own key** (optional - for submission tracking):
+   - Create a free account at [web3forms.com](https://web3forms.com)
+   - Copy your access key from the dashboard
+   - Add to `.env.local`:
+     ```
+     NEXT_PUBLIC_WEB3FORMS_KEY=your-access-key-here
+     ```
+   - This allows you to track submissions in the Web3Forms dashboard
+
+**Features:**
+- Built-in honeypot spam protection
+- No backend code required
+- Reliable email delivery
+- Works out of the box
+- Access keys are public by design (safe to commit)
+- Submission tracking with your own key
+- No setup friction for new users
 
 **Pros:**
-- 5-minute setup
+- Zero configuration needed
 - Spam protection included
-- Email notifications automatically configured
-- Submission dashboard to view all inquiries
-- Free tier: 50 submissions/month
-- No coding required
-
-**Cons:**
-- Third-party dependency
-- Free tier limits
-- Formspree branding on notification emails (free tier)
-
-**Pricing:**
-- Free: 50 submissions/month
-- Basic ($10/mo): 1,000 submissions/month
-- More at formspree.io/pricing
-
----
-
-### Option 2: Resend API
-
-**Best For**: Developers, users who want full control, higher volume
-
-**Setup:**
-1. Create account at [resend.com](https://resend.com)
-2. Verify your sending domain
-3. Generate API key from dashboard
-4. Add to `.env.local`:
-   ```
-   RESEND_API_KEY=re_your_api_key_here
-   ```
-5. The API route is already configured in the project
-
-**Pros:**
-- Full control over email design
+- No domain verification required
 - No third-party branding
-- Higher volume (100 emails/day free tier)
-- Programmable (can trigger automations)
-- Clean, developer-friendly API
+- Generous free tier (250 submissions/month)
+- Professional, stays on your website
+- Friendly error handling with fallback contact info
 
 **Cons:**
-- Requires domain verification (DNS records)
-- Requires API route setup (already included in this project)
-- Slightly more technical
+- Third-party dependency (like any email service)
+- Free tier limits (250/month, plenty for most sites)
 
 **Pricing:**
-- Free: 100 emails/day, 3,000/month
-- Pro ($20/mo): 50,000 emails/month
-- More at resend.com/pricing
+- Free: 250 submissions/month
+- Pro ($4.99/mo): 1,000 submissions/month
+- More at web3forms.com/pricing
 
-**Domain Verification:**
-You'll need to add DNS records to verify your domain. Resend provides the exact records in their dashboard. This typically takes 15-60 minutes to propagate.
-
----
-
-### Option 3: Mailto Fallback
-
-**Best For**: Temporary solution, testing, very low volume
-
-**Setup:**
-Do nothing. If no endpoint is configured, the form automatically uses `mailto:` protocol.
-
-**How It Works:**
-When the user submits the form, their default email client opens with:
-- To: Your contact email (from environment variable)
-- Subject: "Website Inquiry from [Name]"
-- Body: Pre-filled with form data
-
-**Pros:**
-- Zero configuration
-- No cost
-- No third-party service
-- Works anywhere
-
-**Cons:**
-- Poor user experience (leaves your website)
-- Requires user to have email client configured
-- No submission tracking
-- No spam protection
-- Mobile users often have issues
-- Professional clients may see it as unprofessional
-
-**Recommended Use:**
-- Development/testing only
+**Note:** The access key provided is public by design. Web3Forms uses this architecture intentionally - there's no security risk in committing it to version control.
 - Very temporary solution until Formspree/Resend is set up
 
 ---
@@ -836,10 +787,11 @@ A: Search for `bg-yellow-400` and `text-yellow-400` throughout the components an
 
 **Q: The form isn't working. What do I check?**
 A: 
-1. Verify `NEXT_PUBLIC_FORM_ENDPOINT` is set correctly
-2. Check browser console for JavaScript errors
-3. Test your Formspree/Resend endpoint separately
-4. Ensure email address in environment variables is correct
+1. Check browser console for JavaScript errors
+2. Verify you have an internet connection (form submits to Web3Forms API)
+3. If using a custom key, verify `NEXT_PUBLIC_WEB3FORMS_KEY` is set correctly
+4. Ensure email address in site-config.ts is correct
+5. Check spam folder for form submissions
 
 ### Support Resources
 

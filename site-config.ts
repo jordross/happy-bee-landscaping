@@ -31,6 +31,16 @@ export const siteConfig = {
   },
 
   /**
+   * Web3Forms Configuration
+   * 
+   * Access key for the quote form submission service.
+   * This key is public by design and safe to commit.
+   */
+  web3forms: {
+    accessKey: process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "e3eb3787-266b-4709-8a0e-99f7027be0f2",
+  },
+
+  /**
    * Trust & Credentials
    * 
    * Fill in these values when available. Empty strings will hide the credential from the site.
@@ -67,8 +77,14 @@ export const siteConfig = {
   images: {
     hero: {
       // Example: "/images/hero.jpg"
-      src: "",
+      src: "/images/hero.jpg",
       alt: "Professional commercial landscape maintenance in Metro Vancouver",
+      credit: "Photo by Unsplash",
+    },
+    team: {
+      // Example: "/images/team.jpg"
+      src: "",
+      alt: "Happy Bee Landscaping team",
     },
     beforeAfter: [] as BeforeAfterImage[],
   },
